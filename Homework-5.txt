@@ -1,0 +1,223 @@
+1.
+function printSmallerNumber(num1, num2) {
+    if (num1 < num2) {
+        console.log(num1);
+    } else {
+        console.log(num2);
+    }
+}
+
+2.
+
+function countStringsLongerThanThree(str1, str2, str3, str4) {
+    let count = 0;
+
+    // בודקים כל מחרוזת אם היא גדולה מ-3 תווים ומעדכנים את המונה
+    if (str1.length > 3) count++;
+    if (str2.length > 3) count++;
+    if (str3.length > 3) count++;
+    if (str4.length > 3) count++;
+
+    return count;
+}
+
+3.
+function transformInputToLowercase() {
+    // מקבל את הערך מה- input
+    const input = document.getElementById("textInput").value;
+
+    // בודק אם המחרוזת מכילה את האות A
+    if (input.includes("A")) {
+        // הופך את האות A לקטנה באמצעות replace ופעולת toLowerCase
+        const transformedInput = input.replace("A", "a");
+        console.log(transformedInput);
+    } else {
+        console.log("The letter 'A' is not found in the input.");
+    }
+}
+
+function transformFirstUppercaseToLowercase() {
+    // מקבל את הערך מה- input
+    const input = document.getElementById("textInput").value;
+
+    // משתמש בתנאי למציאת אות גדולה
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] >= 'A' && input[i] <= 'Z') {
+            // מחליף את האות הגדולה באות קטנה
+            const transformedInput = input.replace(input[i], input[i].toLowerCase());
+            console.log(transformedInput);
+            return;
+        }
+    }
+
+    console.log("No uppercase letter found in the input.");
+}
+
+4.
+function checkNumberProperties(num) {
+    // בדיקה אם המספר חיובי, שלילי או אפס
+    let positivity = num > 0 ? "Positive" : (num < 0 ? "Negative" : "Zero");
+
+    // בדיקה אם המספר זוגי או אי-זוגי
+    let parity = num % 2 === 0 ? "Even" : "Odd";
+
+    // הדפסת התוצאה
+    console.log(`The number ${num} is ${positivity} and ${parity}.`);
+}
+
+5.
+function checkAndRemoveFirstLast(str) {
+    // בודקים אם המחרוזת ריקה או מכילה תו אחד בלבד
+    if (str.length <= 1) {
+        console.log("String too short to process.");
+        return;
+    }
+
+    // בודקים אם האות הראשונה והאחרונה זהות
+    if (str[0] === str[str.length - 1]) {
+        // מסירים את האות הראשונה והאחרונה
+        const newStr = str.substring(1, str.length - 1);
+        console.log(newStr);
+    } else {
+        console.log("First and last characters are not the same.");
+    }
+}
+
+6.
+function processString(str) {
+    if (str.includes("*")) {
+        // אם יש כוכבית, מסירים אותה
+        const withoutAsterisk = str.replace("*", "");
+        console.log(withoutAsterisk);
+    } else if (str.includes("@")) {
+        // אם יש @, מוסיפים כוכביות בתחילת ובסוף המחרוזת
+        const withStars = `*${str}*`;
+        console.log(withStars);
+    } else if (str.includes("₪")) {
+        // אם יש ₪, מדפיסים "new shekel"
+        console.log("new shekel");
+    } else {
+        // אם אין אף אחד מהתווים, מדפיסים הודעה מתאימה
+        console.log("No special character found.");
+    }
+}
+
+7.
+
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">   
+        <div class="form-container">
+            <h4>כמות השקלים</h4>  
+            <input type="number" id="amount" class="input-box" placeholder="הכנס כמות שקלים">
+            <button class="button" onclick="convertCurrency()">בצע</button>
+        </div>
+        
+        <div class="select-container">
+            <h4>סוג המטבע</h4>
+            <select id="currency" class="input-box">
+                <option value="USD">דולר - 3.9</option>
+                <option value="EUR">אירו - 4.2</option>
+                <option value="GBP">לירה שטרלינג - 5.0</option>
+            </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+CSS
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+	max-width: 500px;
+	margin: 30px auto;
+	padding: 20px;
+	gap: 50px;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+
+.select-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+
+.input-box {
+	padding: 10px;
+	width: 200px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.button {
+	padding: 10px;
+	background-color: #007BFF;
+	color: white;
+	font-size: 16px;
+	border: none;
+	border-radius: 5px;
+	width: 200px;
+}
+
+
+
+JS
+
+const exchangeRates = {
+	USD: 3.9,
+	EUR: 4.2,
+	GBP: 5.0
+};
+
+function convertCurrency() {
+	const amountInput = document.getElementById("amount").value;
+	const currency = document.getElementById("currency").value;
+
+	if (!amountInput || isNaN(amountInput) || amountInput <= 0) {
+		alert("נא להזין כמות שקלים תקינה.");
+		return;
+	}
+
+	if (!exchangeRates[currency]) {
+		alert("סוג מטבע אינו תקין.");
+		return;
+	}
+
+	const amount = parseFloat(amountInput);
+	const result = (amount / exchangeRates[currency]).toFixed(2);
+
+	alert(`כמות השקלים שהוזנה: ${amount}\nהמטבע הנבחר: ${currency}\nהתוצאה: ${result}`);
+}
+
+
+
+
+

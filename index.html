@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">   
+        <div class="form-container">
+            <h4>כמות השקלים</h4>  
+            <input type="number" id="amount" class="input-box" placeholder="הכנס כמות שקלים">
+            <button class="button" onclick="convertCurrency()">בצע</button>
+        </div>
+        
+        <div class="select-container">
+            <h4>סוג המטבע</h4>
+            <select id="currency" class="input-box">
+                <option value="USD">דולר - 3.9</option>
+                <option value="EUR">אירו - 4.2</option>
+                <option value="GBP">לירה שטרלינג - 5.0</option>
+            </select>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
